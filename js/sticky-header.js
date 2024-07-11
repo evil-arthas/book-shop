@@ -1,3 +1,5 @@
+export {stickyHeader}
+
 function stickyHeader(){
   const headerContainer = document.querySelector(".header-container")
   const header = document.querySelector(".header")
@@ -10,5 +12,3 @@ function stickyHeader(){
     header.style.padding = ""
   }
 }
-
-export {stickyHeader}
