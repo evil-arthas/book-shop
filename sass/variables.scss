@@ -1,1 +1,12 @@
-$Montserrat: 700 24px montserrat;
+$main-background-color: rgb(255, 255, 255);
+
+$montserrat-bold: Montserrat bold;
+$open-sans-regular: "Open sans" 400;
+
+@mixin fontMain($font-size, $font-weight){
+  font: $font-weight $font-size 'Montserrat';
+}
+
+@mixin fontOpenSans(){
+  font: 400 10px "Open Sans";
+}

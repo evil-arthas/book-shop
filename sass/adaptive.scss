@@ -1,0 +1,166 @@
+@media screen and (min-width:320px) and (max-width:840px){
+  .header{
+    flex: 1 1 320px;
+    max-width: 839px;
+    height: 40px;
+
+    .header__nav{
+      flex-grow: 1;
+      .nav__menu{
+        opacity: 0;
+        position: absolute;
+        transition: all 1s;
+        flex-flow: column nowrap;
+        width: 150px;
+        height: none;
+        padding: 10px;
+        gap: 10px;
+        z-index: 2;
+        right: 40px;
+        top: 40px;
+      }
+      .nav__menu.active{
+        opacity: 1;
+        display: flex;
+        border-bottom: 1px solid rgb(0, 0, 0);
+        border-right: 1px solid rgb(0, 0, 0);
+        border-left: 1px solid rgb(0, 0, 0);
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        background-color: $main-background-color;
+        a{
+          padding: 5px;
+        }
+      }
+      .header__burger{
+        z-index: 3;
+        cursor: pointer;
+        display: block;
+        width: 40px;
+        height: 40px;
+        margin-left: auto;
+        margin-right: 40px;
+        position: relative;
+        &.active{
+          :nth-child(1){
+            transform: rotate(45deg);
+          }
+          :nth-child(2){
+            display: none;
+          }
+          :nth-child(3){
+            transform: rotate(-45deg);
+          }
+        }
+        span{
+          transition: transform 1s;
+          position: absolute;
+          width: 30px;
+          height: 3px;
+          background-color: rgb(92, 106, 121);
+          left: 0;
+          left: 5px;
+        }
+        :nth-child(1){
+          transform: translateY(-10px);
+        }
+        :nth-child(3){
+          transform: translateY(10px);
+        }
+      }
+    }
+    .header__nav>a{
+      display: none;
+    }
+  }
+  .main{
+    flex: 1 1 320px;
+    max-width: 839px;
+    width: 100%;
+    .store{
+      padding: 0 5px;
+      display: flex;
+      flex-flow: column wrap;
+      width: 100%;
+
+      .store__nav{
+        margin: 5px 0;
+        gap: 10px;
+        position: static;
+        order: -1;
+        padding: 0;
+        width: 100%;
+        flex-flow: row nowrap;
+        overflow: scroll;
+        align-items: center;
+        background-color: $main-background-color;
+        li{
+          display: flex;
+          align-items: center;
+          white-space: nowrap;
+          border: 1px solid rgb(92, 106, 121);
+          border-radius: 16px;
+          padding: 3px;
+          transition: all 1s;
+          height: 30px;
+          background-color: #EFEEF6;
+          @include fontMain(12px,500);
+          
+          &.active{
+          background: #9E98DC;
+          @include fontMain(12px,500);
+          }
+        }
+      }
+    }
+    .store__books{
+      width: 100%;
+      justify-content: center;
+      .store__book-card{
+        flex: 1 1 320px;
+        max-width: 414px;
+      }
+      .book-card__info-wrapper{
+        width: 50%;
+        .book-card__author{
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+                  line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+        .book-card__title{
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+                  line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+        .book-card__rating{
+          margin-bottom: 8px;
+        }
+        .book-card__description{
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+                  line-clamp: 2;
+          -webkit-box-orient: vertical;
+          margin-bottom: 8px;
+        }
+        .book-card__price{
+          font-size:10px;
+          margin-bottom: 8px;
+        }
+      }
+      .book-card__image{
+        min-width: 50%;
+      }
+    }
+    .button-wrapper{
+      width: 100%;
+    }
+  }
+
+  .block{
+    display: none;
+  }
+}

@@ -1,9 +1,7 @@
 //imports
 import './sass/style.scss'
-import {stickyHeader} from './js/sticky-header'
-import {sliding} from './js/slider'
+import './js/sticky-header'
+import './js/slider'
+import './js/books-api'
+import './js/init-blocks'
 //--------------------------------
-
-sliding()
-
-window.addEventListener('scroll', stickyHeader)

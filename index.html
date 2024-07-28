@@ -6,42 +6,58 @@
   <link rel="stylesheet" type="text/css" href="output/main.css">
 </head>
 <body>
-  <div class="header-container">
+  <div class="container header-container">
     <header class="header">
       <div class="header__logo">
         Bookshop
       </div>
-      <nav class="header__nav nav">
-        <div class="nav__burger-button">
-          <img src="/icons/burger-button.svg" alt="error">
-        </div>
-        <a href="#" class="nav__link">books</a>
-        <a href="#" class="nav__link">audiobooks</a>
-        <a href="#" class="nav__link">stationery & gifts</a>
-        <a href="#" class="nav__link">blog</a>
+      <nav class="header__nav">
+        <button class="header__burger nav__burger">          
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav__menu">
+          <li class="menu__link header__link"><a href="#">bookshop</a></li>
+          <li class="menu__link header__link"><a href="#">audiobooks</a></li>
+          <li class="menu__link header__link"><a href="#">Stationery & gifts</a></li>
+          <li class="menu__link header__link"><a href="#">blog</a></li>
+        </ul>
       </nav>
       <div class="header__icons">
-        <div><img src="icons/user.svg" alt="error"></div>
-        <div><img src="icons/search.svg" alt="error"></div>
-        <div><img src="icons/shop-bag.svg" alt="error"></div>
+        <div class="header__icon">
+          <img src="/icons/user.svg" alt="error">
+        </div>
+        <div class="header__icon">
+          <img src="/icons/search.svg" alt="error">
+        </div>
+        <div class="header__icon shop-bag">
+          <img src="/icons/shop-bag.svg" alt="error">
+          <div class="shop-bag__counter"></div>
+        </div>
       </div>
     </header>
   </div>
-  <div class="main-container">
+
+  <div class="container main-container">
     <main class="main">
       <div class="slider">
-        <div class="slider__image">
-          <img class="slider__images hidden"src="/images/image-1.png" alt="error">
-          <img class="slider__images hidden"src="/images/image-2.png" alt="error">
-          <img class="slider__images hidden"src="/images/image-3.png" alt="error">
-        </div>
-        <div class="slider__buttons">
-          <button class="slider__button"></button>
-          <button class="slider__button"></button>
-          <button class="slider__button"></button>
+        <div class="slider__images">
+          <div class="slider__arrows">
+            <div class="slider__arrow left">&#9668;</div>
+            <div class="slider__arrow right">&#9658;</div>
+          </div>
         </div>
       </div>
+
+      <div class="store">
+        <div class="store__books">
+          
+        </div>
+
+        <div class="button-wrapper"><button class="store__button">LOAD MORE</button></div>
+
+      </div>
     </main>
+
   </div>
   <script src="./output/main.js"></script>
 </body>

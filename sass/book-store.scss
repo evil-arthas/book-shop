@@ -1,0 +1,157 @@
+@import './variables.scss';
+
+.main{
+  margin-top: 10px;
+  flex: 1 1 840px;
+  max-width: 1120px;
+}
+
+.main-container{
+  position: relative;
+}
+
+.store{
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+
+  .button-wrapper{
+    order:1;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    width: calc(92400%/1120);
+    align-self: flex-end;
+    margin: 96px 0;
+
+    button{
+      @include fontMain(8px,700);
+      color: rgb(76, 61, 178);
+      border: 1px solid rgb(76, 61, 178);
+      width: 176px;
+      height: 45px;
+      align-self: center;
+      transition: all 0.5s ease-out;
+      cursor: pointer;
+      &:active{
+        background-color: rgba(77, 61, 178, 0.185);
+      }
+    }
+  }
+}
+
+.store__books{
+  width: calc(92400%/1120);
+  align-self: flex-end;
+  display: flex;
+  margin-top: 36px;
+  flex-flow: row wrap;
+  gap: 5vw;
+  z-index: 2;
+
+
+  .store__book-card{
+    flex: 1 1 390px;
+    max-width: 424px;
+    height: 300px;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 15px;
+    justify-content: space-between;
+
+    .book-card__image-wrapper{
+      width: 50%;
+      height: 100%;
+      background: rgb(238, 236, 236);
+      box-shadow: 0px 24px 36px 0px rgba(53, 49, 84, 0.28);
+      .book-card__image{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .book-card__info-wrapper{
+      display: flex;
+      flex-flow: column nowrap;
+      flex: 1 1 160px;
+      justify-content: center;
+      .book-card__author{
+        @include fontOpenSans();
+        margin-bottom: 5px;
+      }
+
+      .book-card__title{
+        @include fontMain(16px,700);
+        margin-bottom: 5px;
+      }
+
+      .book-card__rating{
+        @include fontOpenSans();
+        margin-bottom: 16px;
+        span{
+          margin-left: 2px;
+        }
+      }
+
+      .book-card__description{
+        @include fontOpenSans();
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+                line-clamp: 3;
+        -webkit-box-orient: vertical;
+        margin-bottom: 16px;
+      }
+
+      .book-card__price{
+        @include fontMain(13px,700);
+        margin-bottom: 16px;
+      }
+
+      .book-card__button{
+        @include fontMain(8px,700);
+        color: rgb(76, 61, 178);
+        border: 1px solid rgb(76, 61, 178);
+        width: 100%;
+        height: 45px;
+        transition: all 0.5s ease-out;
+        cursor: pointer;
+        &:active{
+          background-color: rgba(77, 61, 178, 0.185);
+        }
+      }
+    }
+  }
+}
+
+.store__nav{
+  @include fontMain(12px,500);
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 23px;
+  width: calc(41600%/1440);
+  padding: 5%;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  background: rgb(239, 238, 246);
+  display: inline-flex;
+  flex-flow: column;
+  list-style: disc;
+
+  li.inactive{
+    max-width: fit-content;
+    cursor: pointer;
+    &::marker{
+      content:""
+    }
+  }
+  li.active{
+    @include fontMain(16px, 700);
+    display: list-item;
+    &::marker{
+      color: rgb(117, 106, 211);
+    }
+  }
+}

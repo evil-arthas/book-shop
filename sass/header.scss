@@ -1,0 +1,75 @@
+@import './variables.scss';
+
+
+.header-container{
+  border-bottom: 1px solid rgb(0, 0, 0);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  z-index: 6;
+  background-color: $main-background-color;
+}
+.header{
+  flex: 1 1 840px;
+  height: 116px;
+  max-width: 1120px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  transition: height 1s ease;
+
+  .header__logo{
+    @include fontMain(24px, 700);
+    cursor: pointer;
+  }
+
+  .header__nav{
+    @include fontMain(10px, 700);
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    .nav__menu{
+      gap: 40px;
+      display: flex;
+      flex-flow: row nowrap;
+      a{
+        color: rgb(92, 106, 121);
+        text-transform: uppercase;
+        &:focus{
+          @include fontMain(10px,900);
+          color: rgb(28, 42, 57);
+        }
+      }
+    }
+
+  }
+  .header__burger{
+    display: none;
+    cursor: pointer;
+  }
+
+  .header__icons{
+    cursor: pointer;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 40px;
+    .shop-bag{
+      position: relative;
+      .shop-bag__counter{
+        display: none;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        @include fontMain(8px, 700);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: red;
+        bottom: -6%;
+        right: -6%;
+        font-size: 6px;
+        color: #fff;
+      }
+    }
+  }
+}
