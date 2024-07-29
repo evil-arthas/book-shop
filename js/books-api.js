@@ -100,6 +100,7 @@ function fetchBooks(url){
             bookAuthors.textContent += `${author}${index===info.authors.length-1? "":", "}`
           })
           bookCard.dataset.authors = bookAuthors.textContent
+          bookCard.dataset.id = item.id
           bookCardInfoWrapper.appendChild(bookAuthors)
         }
     
@@ -147,9 +148,14 @@ function fetchBooks(url){
         }
     
         let bookCardButton = document.createElement("button")
+
         bookCardButton.classList = "book-card__button button"
-        bookCardButton.textContent = "BUY NOW"
-        
+
+        if(localStorage.includes(item.id)){
+          bookCardButton.textContent = "IN THE CART"
+        } else {
+          bookCardButton.textContent = "BUY NOW"
+        }
 
         bookCardInfoWrapper.appendChild(bookCardButton)
     
@@ -186,34 +192,26 @@ bookStore.addEventListener("click", function pushToLocalStorage(event){
       case "BUY NOW":
         target.textContent = "IN THE CART";
         target.parentNode.parentNode.classList.add("active")
+        localStorage.push(target.parentNode.parentNode.dataset.id)
         break;
 
       case "IN THE CART":
         target.textContent = "BUY NOW";
         target.parentNode.parentNode.classList.remove("active")
+        localStorage.splice(localStorage.indexOf(target.parentNode.parentNode.dataset.id),1)
         break;
     }
 
-    let storage = Array.from(bookStore.getElementsByClassName("active"))
+    console.log(localStorage)
 
 
     let storageCounter = document.querySelector(".shop-bag__counter")
-    if(storage.length>0){
-      storageCounter.textContent = storage.length
+    if(localStorage.length>0){
+      storageCounter.textContent = localStorage.length
       storageCounter.style.display="flex"
     }else{
       storageCounter.style.display="none"
     }
-
-
-    localStorage = []
-    storage.forEach((bookCard,index)=>{
-      let titleData = bookCard.getAttribute("data-title")
-      let authorData = bookCard.getAttribute("data-authors")
-      let authorPrice = bookCard.getAttribute("data-price")
-      let book = new createObjectForLocalStorage(titleData, authorData, authorPrice)
-      localStorage[index] = book
-    })
   }
 })
 
