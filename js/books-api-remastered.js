@@ -36,6 +36,7 @@ if(localStorageData.length>0){
 }else{
   storageCounter.style.display="none"
 }
+//конец 
 
 buttonToLoad.addEventListener("click", loadBooks)
 
