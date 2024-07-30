@@ -22,7 +22,21 @@ const store = document.querySelector(".store")
 const bookStore = document.querySelector(".store__books")
 const mainContainer = document.querySelector(".main-container")
 const buttonToLoad = document.querySelector(".store__button")
-let localStorage = []
+
+// получаем из локального хранилища данные
+// если там нет этого, то пустой массив
+
+let localStorageData = JSON.parse(localStorage.getItem('cart')) ?? [];
+
+//отрисовка каунтера корзины при перезагрузке страницы.
+let storageCounter = document.querySelector(".shop-bag__counter")
+if(localStorageData.length>0){
+  storageCounter.textContent = localStorageData.length
+  storageCounter.style.display="flex"
+}else{
+  storageCounter.style.display="none"
+}
+
 buttonToLoad.addEventListener("click", loadBooks)
 
 
@@ -151,7 +165,7 @@ function fetchBooks(url){
 
         bookCardButton.classList = "book-card__button button"
 
-        if(localStorage.includes(item.id)){
+        if(localStorageData.includes(item.id)){
           bookCardButton.textContent = "IN THE CART"
         } else {
           bookCardButton.textContent = "BUY NOW"
@@ -192,35 +206,31 @@ bookStore.addEventListener("click", function pushToLocalStorage(event){
       case "BUY NOW":
         target.textContent = "IN THE CART";
         target.parentNode.parentNode.classList.add("active")
-        localStorage.push(target.parentNode.parentNode.dataset.id)
+        localStorageData.push(target.parentNode.parentNode.dataset.id)
         break;
 
       case "IN THE CART":
         target.textContent = "BUY NOW";
         target.parentNode.parentNode.classList.remove("active")
-        localStorage.splice(localStorage.indexOf(target.parentNode.parentNode.dataset.id),1)
+        localStorageData.splice(localStorageData.indexOf(target.parentNode.parentNode.dataset.id),1)
         break;
     }
 
-    console.log(localStorage)
+    // записываем в локальное хранилище значение там храниться всегда строка, поэтому используем JSON.stringify
+    localStorage.setItem('cart', JSON.stringify(localStorageData))
 
+    console.log(localStorageData)
 
     let storageCounter = document.querySelector(".shop-bag__counter")
-    if(localStorage.length>0){
-      storageCounter.textContent = localStorage.length
+    if(localStorageData.length>0){
+      storageCounter.textContent = localStorageData.length
       storageCounter.style.display="flex"
     }else{
       storageCounter.style.display="none"
     }
+
   }
 })
 
 initStoreNav()
 loadBooks()
-
-
-function createObjectForLocalStorage(title,price,authors){
-  this.title = title
-  this.price = price
-  this.authors = authors
-}
